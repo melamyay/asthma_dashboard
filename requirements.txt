@@ -21,3 +21,4 @@ urllib3==2.3.0
 webencodings==0.5.1
 selenium==4.28.1
 gunicorn
+dash
