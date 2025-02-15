@@ -2,6 +2,7 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html, Input, Output
 import plotly.express as px
+import os
 import pandas as pd
 
 from scraper_exploration import (
@@ -42,6 +43,7 @@ app = dash.Dash(
     suppress_callback_exceptions=True
 )
 
+server = app.server
 # === DATA LOADING AND PREPARATION ===
 asthma_facts = fetch_asthma_data()
 
@@ -461,4 +463,4 @@ def switch_tab(active_tab):
 
 # === RUN THE APP ===
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
